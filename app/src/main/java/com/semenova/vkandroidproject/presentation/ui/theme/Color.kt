@@ -1,4 +1,4 @@
-package com.semenova.vkandroidproject.ui.theme
+package com.semenova.vkandroidproject.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
