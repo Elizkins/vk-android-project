@@ -1,10 +1,13 @@
 package com.semenova.vkandroidproject.domain
 
-import androidx.compose.ui.graphics.vector.ImageVector
-
 data class AppItem(
+    val id: Int,
     val name: String,
-    val description: String,
+    val developer: String,
     val category: AppCategory,
-    val icon: String
+    val ageRating: Int,
+    val size: Float,
+    val iconUrl: String,
+    val screenshotUrlList: List<String>,
+    val description: String
 )
