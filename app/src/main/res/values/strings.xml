@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VkAndroidProject</string>
+    <string name="main_screen_app_list">Список приложений</string>
 </resources>
