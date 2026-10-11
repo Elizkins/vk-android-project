@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.semenova.vkandroidproject.presentation.navigation.NavGraph
-import com.semenova.vkandroidproject.presentation.screens.applist.MainScreen
 import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 import dagger.hilt.android.AndroidEntryPoint
 

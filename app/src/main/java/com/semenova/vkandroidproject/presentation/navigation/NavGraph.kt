@@ -5,7 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.semenova.vkandroidproject.presentation.screens.appdetails.AppDetailsScreen
-import com.semenova.vkandroidproject.presentation.screens.applist.MainScreen
+import com.semenova.vkandroidproject.presentation.screens.applist.AppListScreen
 
 @Composable
 fun NavGraph() {
@@ -16,7 +16,7 @@ fun NavGraph() {
         startDestination = Screen.AppListScreen.route
     ) {
         composable(Screen.AppListScreen.route) {
-            MainScreen(
+            AppListScreen(
                 onAppClick = {
                     navController.navigate(Screen.AppScreen.createRoute(it))
                 }
@@ -28,6 +28,9 @@ fun NavGraph() {
                 appId = appId,
                 onBackClick = {
                     navController.popBackStack()
+                },
+                onShowcaseAppClick = { appId ->
+                    navController.navigate(Screen.AppScreen.createRoute(appId))
                 }
             )
         }

@@ -21,9 +21,9 @@ import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 
 
 @Composable
-fun MainScreen(
+fun AppListScreen(
     modifier: Modifier = Modifier,
-    viewModel: MainScreenViewModel = hiltViewModel(),
+    viewModel: AppListScreenViewModel = hiltViewModel(),
     onAppClick: (Int) -> Unit
 ) {
     Scaffold(
@@ -66,9 +66,9 @@ fun MainScreen(
 
 @Preview
 @Composable
-fun MainScreenPreview() {
+fun AppListScreenPreview() {
     VkAndroidProjectTheme {
-        MainScreen(
+        AppListScreen(
             onAppClick = {}
         )
     }

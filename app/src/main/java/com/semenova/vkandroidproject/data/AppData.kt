@@ -107,6 +107,61 @@ object AppData {
             iconUrl = "https://www.google.com/s2/favicons?domain=photos.google.com&sz=128",
             screenshotUrlList = shots("photos"),
             description = "Храните фото и видео в облаке и находите нужные кадры за секунды. Редактируйте снимки и делитесь альбомами с близкими!"
+        ),
+        AppItem(
+            id = 10,
+            name = "VK",
+            developer = "VK",
+            category = AppCategory.COMM,
+            ageRating = 12,
+            size = 134.5f,
+            iconUrl = "https://www.google.com/s2/favicons?domain=vk.com&sz=128",
+            screenshotUrlList = shots("vk"),
+            description = "Социальная сеть для общения, музыки и видео. Переписывайтесь с друзьями, следите за новостями и находите интересные сообщества!"
+        ),
+        AppItem(
+            id = 11,
+            name = "Яндекс Музыка",
+            developer = "Яндекс",
+            category = AppCategory.FUN,
+            ageRating = 12,
+            size = 89.9f,
+            iconUrl = "https://www.google.com/s2/favicons?domain=music.yandex.ru&sz=128",
+            screenshotUrlList = shots("yandexmusic"),
+            description = "Огромная музыкальная коллекция с умными подборками. Слушайте любимые треки, открывайте новых исполнителей и сохраняйте музыку офлайн!"
+        ),
+        AppItem(
+            id = 12,
+            name = "Яндекс Карты",
+            developer = "Яндекс",
+            category = AppCategory.TRAVEL,
+            ageRating = 3,
+            size = 112.3f,
+            iconUrl = "https://www.google.com/s2/favicons?domain=yandex.ru/maps&sz=128",
+            screenshotUrlList = shots("yandexmaps"),
+            description = "Карты, навигация и общественный транспорт с учётом пробок. Находите организации, стройте маршруты и добирайтесь без задержек!"
+        ),
+        AppItem(
+            id = 13,
+            name = "Google Таблицы",
+            developer = "Google LLC",
+            category = AppCategory.WORK,
+            ageRating = 3,
+            size = 52.6f,
+            iconUrl = "https://www.google.com/s2/favicons?domain=sheets.google.com&sz=128",
+            screenshotUrlList = shots("sheets"),
+            description = "Онлайн-таблицы для расчётов, отчётов и анализа данных. Работайте с командой в реальном времени и сохраняйте изменения автоматически!"
+        ),
+        AppItem(
+            id = 14,
+            name = "Snapseed",
+            developer = "Google LLC",
+            category = AppCategory.PHOTO,
+            ageRating = 3,
+            size = 38.2f,
+            iconUrl = "https://www.google.com/s2/favicons?domain=snapseed.online&sz=128",
+            screenshotUrlList = shots("snapseed"),
+            description = "Мощный фоторедактор с десятками инструментов и фильтров. Улучшайте снимки, меняйте цвета и придавайте фото нужное настроение!"
         )
     )
     

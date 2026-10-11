@@ -49,7 +49,7 @@ fun Toolbar(
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(
-            text = stringResource(R.string.main_screen_app_list),
+            text = stringResource(R.string.app_list_title),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onPrimary
         )
