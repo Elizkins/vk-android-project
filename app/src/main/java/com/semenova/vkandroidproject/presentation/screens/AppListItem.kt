@@ -10,24 +10,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Message
-import androidx.compose.material.icons.automirrored.filled.Note
-import androidx.compose.material.icons.filled.AcUnit
-import androidx.compose.material.icons.filled.Camera
-import androidx.compose.material.icons.filled.Map
-import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,8 +30,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.semenova.vkandroidproject.R
 import com.semenova.vkandroidproject.domain.AppCategory
-import com.semenova.vkandroidproject.domain.AppItem
+import com.semenova.vkandroidproject.presentation.ui.theme.CommBg
+import com.semenova.vkandroidproject.presentation.ui.theme.FunBg
+import com.semenova.vkandroidproject.presentation.ui.theme.PhotoBg
+import com.semenova.vkandroidproject.presentation.ui.theme.TravelBg
 import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
+import com.semenova.vkandroidproject.presentation.ui.theme.WorkBg
 
 
 @Composable
@@ -49,34 +47,20 @@ fun AppListItem(
     category: AppCategory
 ) {
     val categoryColor = when (category) {
-        AppCategory.COMM -> {
-            Color.Blue
-        }
-        
-        AppCategory.FUN -> {
-            Color.Cyan
-        }
-        
-        AppCategory.TRAVEL -> {
-            Color.Green
-        }
-        
-        AppCategory.WORK -> {
-            Color.Gray
-        }
-        
-        AppCategory.PHOTO -> {
-            Color.Yellow
-        }
+        AppCategory.COMM -> CommBg
+        AppCategory.FUN -> FunBg
+        AppCategory.TRAVEL -> TravelBg
+        AppCategory.WORK -> WorkBg
+        AppCategory.PHOTO -> PhotoBg
     }
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(horizontal = 8.dp)
             .border(
                 width = 1.dp,
                 shape = RoundedCornerShape(16.dp),
-                color = MaterialTheme.colorScheme.secondary
+                color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
             )
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
@@ -113,7 +97,7 @@ fun AppListItem(
                     text = category.description,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
