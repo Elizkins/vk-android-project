@@ -6,5 +6,5 @@ data class AppItem(
     val name: String,
     val description: String,
     val category: AppCategory,
-    val icon: ImageVector
+    val icon: String
 )

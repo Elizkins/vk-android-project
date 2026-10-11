@@ -18,26 +18,26 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF185FA5),
+    primary = Color(0xFF5E8574),
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFD6E6F8),
-    onPrimaryContainer = Color(0xFF042C53),
-    secondary = Color(0xFF534AB7),
+    primaryContainer = Color(0xFFE3EEE8),
+    onPrimaryContainer = Color(0xFF2A4338),
+    secondary = Color(0xFF7E9A8C),
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFFE4E1FA),
-    onSecondaryContainer = Color(0xFF26215C),
-    tertiary = Color(0xFF0F6E56),
+    secondaryContainer = Color(0xFFE8F0EB),
+    onSecondaryContainer = Color(0xFF34493F),
+    tertiary = Color(0xFFA39A6E),
     onTertiary = Color.White,
-    tertiaryContainer = Color(0xFFCDEFE3),
-    onTertiaryContainer = Color(0xFF04342C),
-    background = Color(0xFFF8FAFD),
-    onBackground = Color(0xFF1A1C1E),
+    tertiaryContainer = Color(0xFFF0EDDC),
+    onTertiaryContainer = Color(0xFF4A4529),
+    background = Color(0xFFF9FBFA),
+    onBackground = Color(0xFF2B312E),
     surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF1A1C1E),
-    surfaceVariant = Color(0xFFE1E8F0),
-    onSurfaceVariant = Color(0xFF42474E),
-    outline = Color(0xFF72787F),
-    error = Color(0xFFBA1A1A),
+    onSurface = Color(0xFF2B312E),
+    surfaceVariant = Color(0xFFEDF2EF),
+    onSurfaceVariant = Color(0xFF5A645F),
+    outline = Color(0xFFA8B3AD),
+    error = Color(0xFFC98085),
     onError = Color.White
 )
 
@@ -45,7 +45,7 @@ private val LightColorScheme = lightColorScheme(
 fun VkAndroidProjectTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
