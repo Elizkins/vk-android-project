@@ -11,6 +11,7 @@ import javax.inject.Inject
 class AppScreenViewModel @Inject constructor() : ViewModel() {
     val apps = AppData.apps
     
+    
     fun getAppById(id: Int): AppItem {
         return AppData.byId(id) ?: getApp()
     }
