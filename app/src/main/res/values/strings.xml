@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">VkAndroidProject</string>
-    <string name="main_screen_app_list">Список приложений</string>
+
+    <string name="app_list_title">Список приложений</string>
+
+    <string name="app_details_age">Возраст</string>
+    <string name="app_details_size">Размер</string>
+    <string name="app_details_screenshots">Скриншоты</string>
+    <string name="app_details_description">Описание приложения</string>
+    <string name="app_details_read_more">Читать подробнее</string>
+    <string name="app_details_developer">Разработчик</string>
+    <string name="app_details_showcase">Витрина</string>
+
+    <string name="install">Установить</string>
+    <string name="under_developement">В процессе разработки</string>
 </resources>

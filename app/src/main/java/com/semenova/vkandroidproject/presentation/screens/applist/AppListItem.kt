@@ -1,4 +1,4 @@
-package com.semenova.vkandroidproject.presentation.screens
+package com.semenova.vkandroidproject.presentation.screens.applist
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,11 +18,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.semenova.vkandroidproject.domain.AppCategory
 import com.semenova.vkandroidproject.presentation.ui.theme.CommBg
@@ -104,7 +102,7 @@ fun AppListItemPreview() {
                 title = "Telegram",
                 description = "Быстрые сообщения, звонки и каналы",
                 category = AppCategory.COMM,
-                icon = "https://www.google.com/s2/favicons?domain=telegram.org&sz=128"
+                icon = "https://www.google.com/s2/favicons?domain=telegram.org&sz=128",
             )
         }
     }
