@@ -2,6 +2,7 @@
     <string name="app_name">VkAndroidProject</string>
 
     <string name="app_list_title">Список приложений</string>
+    <string name="app_list_something_went_wrong">Something went wrong...</string>
 
     <string name="app_details_age">Возраст</string>
     <string name="app_details_size">Размер</string>
@@ -13,4 +14,5 @@
 
     <string name="install">Установить</string>
     <string name="under_developement">В процессе разработки</string>
+    <string name="app_list_something_important">Something important...</string>
 </resources>
