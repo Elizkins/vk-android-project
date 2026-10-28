@@ -1,5 +1,6 @@
 package com.semenova.vkandroidproject.data
 
+import com.semenova.vkandroidproject.data.test.AppItemDto
 import com.semenova.vkandroidproject.domain.AppCategory
 import com.semenova.vkandroidproject.domain.AppItem
 
@@ -9,7 +10,7 @@ object AppData {
     }
     
     val apps = listOf(
-        AppItem(
+        AppItemDto(
             id = 1,
             name = "Telegram",
             developer = "Telegram FZ-LLC",
@@ -20,7 +21,7 @@ object AppData {
             screenshotUrlList = shots("telegram"),
             description = "Быстрый и безопасный мессенджер для общения без границ. Создавайте чаты, звоните друзьям и подписывайтесь на любимые каналы!"
         ),
-        AppItem(
+        AppItemDto(
             id = 2,
             name = "Spotify",
             developer = "Spotify AB",
@@ -31,7 +32,7 @@ object AppData {
             screenshotUrlList = shots("spotify"),
             description = "Миллионы треков и подкастов в одном приложении. Собирайте плейлисты под настроение и слушайте музыку где угодно!"
         ),
-        AppItem(
+        AppItemDto(
             id = 3,
             name = "Google Карты",
             developer = "Google LLC",
@@ -42,7 +43,7 @@ object AppData {
             screenshotUrlList = shots("maps"),
             description = "Подробные карты и точная навигация по всему миру. Стройте маршруты, находите интересные места и не теряйтесь в пути!"
         ),
-        AppItem(
+        AppItemDto(
             id = 4,
             name = "Notion",
             developer = "Notion Labs, Inc.",
@@ -53,7 +54,7 @@ object AppData {
             screenshotUrlList = shots("notion"),
             description = "Единое пространство для заметок, задач и проектов. Наведите порядок в делах и создайте собственную базу знаний!"
         ),
-        AppItem(
+        AppItemDto(
             id = 5,
             name = "Instagram",
             developer = "Meta Platforms, Inc.",
@@ -64,7 +65,7 @@ object AppData {
             screenshotUrlList = shots("instagram"),
             description = "Соцсеть для ярких фото и коротких видео. Делитесь моментами жизни и следите за историями друзей и любимых авторов!"
         ),
-        AppItem(
+        AppItemDto(
             id = 6,
             name = "Яндекс Go",
             developer = "Яндекс",
@@ -75,7 +76,7 @@ object AppData {
             screenshotUrlList = shots("yandexgo"),
             description = "Такси, доставка и самокаты в одном приложении. Выбирайте удобный способ поездки и добирайтесь быстрее!"
         ),
-        AppItem(
+        AppItemDto(
             id = 7,
             name = "YouTube",
             developer = "Google LLC",
@@ -86,7 +87,7 @@ object AppData {
             screenshotUrlList = shots("youtube"),
             description = "Крупнейший видеосервис с миллионами роликов и прямых трансляций. Смотрите, учитесь и открывайте новых авторов!"
         ),
-        AppItem(
+        AppItemDto(
             id = 8,
             name = "Google Docs",
             developer = "Google LLC",
@@ -97,7 +98,7 @@ object AppData {
             screenshotUrlList = shots("docs"),
             description = "Онлайн-редактор текстовых документов с совместным доступом. Пишите вместе с командой и не теряйте ни одной правки!"
         ),
-        AppItem(
+        AppItemDto(
             id = 9,
             name = "Google Фото",
             developer = "Google LLC",
@@ -108,7 +109,7 @@ object AppData {
             screenshotUrlList = shots("photos"),
             description = "Храните фото и видео в облаке и находите нужные кадры за секунды. Редактируйте снимки и делитесь альбомами с близкими!"
         ),
-        AppItem(
+        AppItemDto(
             id = 10,
             name = "VK",
             developer = "VK",
@@ -119,7 +120,7 @@ object AppData {
             screenshotUrlList = shots("vk"),
             description = "Социальная сеть для общения, музыки и видео. Переписывайтесь с друзьями, следите за новостями и находите интересные сообщества!"
         ),
-        AppItem(
+        AppItemDto(
             id = 11,
             name = "Яндекс Музыка",
             developer = "Яндекс",
@@ -130,7 +131,7 @@ object AppData {
             screenshotUrlList = shots("yandexmusic"),
             description = "Огромная музыкальная коллекция с умными подборками. Слушайте любимые треки, открывайте новых исполнителей и сохраняйте музыку офлайн!"
         ),
-        AppItem(
+        AppItemDto(
             id = 12,
             name = "Яндекс Карты",
             developer = "Яндекс",
@@ -141,7 +142,7 @@ object AppData {
             screenshotUrlList = shots("yandexmaps"),
             description = "Карты, навигация и общественный транспорт с учётом пробок. Находите организации, стройте маршруты и добирайтесь без задержек!"
         ),
-        AppItem(
+        AppItemDto(
             id = 13,
             name = "Google Таблицы",
             developer = "Google LLC",
@@ -152,7 +153,7 @@ object AppData {
             screenshotUrlList = shots("sheets"),
             description = "Онлайн-таблицы для расчётов, отчётов и анализа данных. Работайте с командой в реальном времени и сохраняйте изменения автоматически!"
         ),
-        AppItem(
+        AppItemDto(
             id = 14,
             name = "Snapseed",
             developer = "Google LLC",
@@ -164,6 +165,4 @@ object AppData {
             description = "Мощный фоторедактор с десятками инструментов и фильтров. Улучшайте снимки, меняйте цвета и придавайте фото нужное настроение!"
         )
     )
-    
-    fun byId(id: Int): AppItem? = apps.firstOrNull { it.id == id }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.semenova.vkandroidproject.R
 import com.semenova.vkandroidproject.data.AppData
 import com.semenova.vkandroidproject.domain.AppCategory
@@ -33,12 +34,16 @@ import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 @Composable
 fun AppDetailsScreen(
     modifier: Modifier = Modifier,
-    viewModel: AppScreenViewModel = hiltViewModel(),
     appId: Int,
+    viewModel: AppScreenViewModel = hiltViewModel(
+        creationCallback = { factory: AppScreenViewModel.Factory ->
+            factory.create(appId)
+        }
+    ),
     onBackClick: () -> Unit,
     onShowcaseAppClick: (Int) -> Unit,
 ) {
-    val app = remember { viewModel.getAppById(appId) }
+    val state by viewModel.state.collectAsStateWithLifecycle()
     
     val context = LocalContext.current
     val underDevelopmentText = stringResource(R.string.under_developement)
@@ -46,69 +51,82 @@ fun AppDetailsScreen(
     var descriptionCollapsed by remember { mutableStateOf(false) }
     
     Scaffold { innerPadding ->
-        Column(
-            modifier = modifier
-                .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(bottom = 24.dp),
-        ) {
-            Toolbar(
-                onBackClick = onBackClick,
-                onShareClick = {
-                    Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
-                },
-            )
-            Spacer(Modifier.height(8.dp))
-            AppDetailsHeader(
-                app = app,
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-            Spacer(Modifier.height(16.dp))
-            InstallButton(
-                onClick = {
-                    Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            )
-            Spacer(Modifier.height(12.dp))
-            ScreenshotsList(
-                screenshotUrlList = app.screenshotUrlList,
-                contentPadding = PaddingValues(horizontal = 16.dp),
-            )
-            Spacer(Modifier.height(12.dp))
-            AppDescription(
-                description = app.description,
-                collapsed = descriptionCollapsed,
-                onReadMoreClick = {
-                    descriptionCollapsed = true
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-            )
-            Spacer(Modifier.height(12.dp))
-            Showcase(
-                appList = viewModel.apps,
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                onAppClick = onShowcaseAppClick
-            )
-            Spacer(Modifier.height(12.dp))
-            HorizontalDivider(
-                modifier = Modifier.padding(horizontal = 16.dp),
-                color = MaterialTheme.colorScheme.outlineVariant,
-            )
-            Spacer(Modifier.height(12.dp))
-            Developer(
-                name = app.developer,
-                onClick = {
-                    Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 16.dp),
-            )
+        
+        when(state){
+            is AppScreenState.Content -> {
+                val app = (state as AppScreenState.Content).app
+                val apps = (state as AppScreenState.Content).apps
+                Column(
+                    modifier = modifier
+                        .padding(innerPadding)
+                        .verticalScroll(rememberScrollState())
+                        .padding(bottom = 24.dp),
+                ) {
+                    Toolbar(
+                        onBackClick = onBackClick,
+                        onShareClick = {
+                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                        },
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    AppDetailsHeader(
+                        app = app,
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    InstallButton(
+                        onClick = {
+                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    ScreenshotsList(
+                        screenshotUrlList = app.screenshotUrlList,
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    AppDescription(
+                        description = app.description,
+                        collapsed = descriptionCollapsed,
+                        onReadMoreClick = {
+                            descriptionCollapsed = true
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Showcase(
+                        appList = apps,
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        onAppClick = onShowcaseAppClick
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    HorizontalDivider(
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                        color = MaterialTheme.colorScheme.outlineVariant,
+                    )
+                    Spacer(Modifier.height(12.dp))
+                    Developer(
+                        name = app.developer,
+                        onClick = {
+                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 16.dp),
+                    )
+                }
+            }
+            AppScreenState.Error -> {
+            
+            }
+            AppScreenState.Loading -> {
+            
+            }
         }
     }
 }

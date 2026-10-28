@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.semenova.vkandroidproject.R
 import com.semenova.vkandroidproject.data.AppData
+import com.semenova.vkandroidproject.data.mapper.toAppItemsEntities
 import com.semenova.vkandroidproject.domain.AppItem
 import com.semenova.vkandroidproject.presentation.screens.applist.AppListItem
 import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
@@ -75,7 +76,7 @@ fun Showcase(
 private fun Preview() {
     VkAndroidProjectTheme() {
         Showcase(
-            appList = AppData.apps,
+            appList = AppData.apps.toAppItemsEntities(),
             contentPadding = PaddingValues(horizontal = 16.dp),
             onAppClick = {}
         )
