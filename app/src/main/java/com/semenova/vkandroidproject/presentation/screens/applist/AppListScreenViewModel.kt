@@ -1,12 +1,8 @@
 package com.semenova.vkandroidproject.presentation.screens.applist
 
-import android.R
-import android.os.Message
-import android.system.StructTimeval
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.semenova.vkandroidproject.data.AppData
-import com.semenova.vkandroidproject.data.AppRepositoryImpl
+import com.semenova.vkandroidproject.data.repostory.AppRepositoryImpl
 import com.semenova.vkandroidproject.domain.AppItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
