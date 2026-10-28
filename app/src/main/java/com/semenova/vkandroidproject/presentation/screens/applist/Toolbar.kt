@@ -1,6 +1,7 @@
 package com.semenova.vkandroidproject.presentation.screens.applist
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,13 +27,17 @@ import com.semenova.vkandroidproject.presentation.utils.CustomIcons
 
 @Composable
 fun Toolbar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
             .background(MaterialTheme.colorScheme.primary)
+            .clickable {
+                onClick()
+            }
             .padding(
                 start = 24.dp,
                 end = 0.dp,
@@ -61,7 +66,9 @@ fun Toolbar(
 fun ToolbarPreview() {
     VkAndroidProjectTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Toolbar(modifier = Modifier.padding(innerPadding))
+            Toolbar(
+                modifier = Modifier.padding(innerPadding),
+                onClick = {})
         }
     }
 }
