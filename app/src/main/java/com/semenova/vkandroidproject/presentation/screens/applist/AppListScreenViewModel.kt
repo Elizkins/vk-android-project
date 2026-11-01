@@ -4,19 +4,24 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.semenova.vkandroidproject.data.repostory.AppRepositoryImpl
 import com.semenova.vkandroidproject.domain.AppItem
+import com.semenova.vkandroidproject.domain.AppRepository
+import com.semenova.vkandroidproject.domain.usecase.GetAllApps
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AppListScreenViewModel @Inject constructor() : ViewModel() {
-    private val repository = AppRepositoryImpl()
+class AppListScreenViewModel @Inject constructor(
+    private val getAllApps: GetAllApps
+) : ViewModel() {
     private val _events = Channel<AppListScreenEvent>(Channel.BUFFERED)
     val events = _events.receiveAsFlow()
     
@@ -28,17 +33,14 @@ class AppListScreenViewModel @Inject constructor() : ViewModel() {
     }
     
     fun loadItems() {
-        viewModelScope.launch {
-            runCatching {
+        getAllApps()
+            .onStart {
                 _state.value = AppListScreenState.Loading
-                repository.getAllApps()
-                    .onEach { allApps ->
-                        _state.value = AppListScreenState.Content(apps = allApps)
-                    }.launchIn(this)
-            }.onFailure {
+            }.onEach { allApps ->
+                _state.value = AppListScreenState.Content(apps = allApps)
+            }.catch {
                 _state.value = AppListScreenState.Error
-            }
-        }
+            }.launchIn(viewModelScope)
     }
     
     fun sendMessage() {
