@@ -6,15 +6,16 @@ import com.semenova.vkandroidproject.data.mapper.toAppItemsEntities
 import com.semenova.vkandroidproject.domain.AppCategory
 import com.semenova.vkandroidproject.domain.AppItem
 import com.semenova.vkandroidproject.domain.AppRepository
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class AppRepositoryImpl : AppRepository {
+class AppRepositoryImpl @Inject constructor() : AppRepository {
     override fun getAllApps(): Flow<List<AppItem>> {
         return flowOf(AppData.apps.toAppItemsEntities())
     }
     
-    override fun getAppItemById(appId: Int): AppItem {
+    override suspend fun getAppItemById(appId: Int): AppItem {
         return AppData.apps.firstOrNull { it.id == appId }?.toAppItemEntity() ?: getApp()
     }
     
