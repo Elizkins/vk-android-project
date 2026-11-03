@@ -48,7 +48,7 @@ import kotlinx.coroutines.launch
 fun AppListScreen(
     modifier: Modifier = Modifier,
     viewModel: AppListScreenViewModel = hiltViewModel(),
-    onAppClick: (Int) -> Unit
+    onAppClick: (String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val events = viewModel.events

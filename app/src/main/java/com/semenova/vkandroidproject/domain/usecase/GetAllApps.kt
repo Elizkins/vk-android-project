@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetAllApps @Inject constructor(
     private val repository: AppRepository
 ) {
-    operator fun invoke() = repository.getAllApps()
+    suspend operator fun invoke() = repository.getAllApps()
 }

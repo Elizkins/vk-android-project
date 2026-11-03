@@ -39,14 +39,14 @@ import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 @Composable
 fun AppDetailsScreen(
     modifier: Modifier = Modifier,
-    appId: Int,
+    appId: String,
     viewModel: AppScreenViewModel = hiltViewModel(
         creationCallback = { factory: AppScreenViewModel.Factory ->
             factory.create(appId)
         }
     ),
     onBackClick: () -> Unit,
-    onShowcaseAppClick: (Int) -> Unit,
+    onShowcaseAppClick: (String) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     
@@ -157,7 +157,7 @@ private fun Preview() {
     VkAndroidProjectTheme {
         AppDetailsScreen(
             modifier = Modifier.fillMaxSize(),
-            appId = 0,
+            appId = "0",
             onBackClick = {},
             onShowcaseAppClick = {}
         )

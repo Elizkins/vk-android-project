@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetAppById @Inject constructor(
     private val repository: AppRepository
 ) {
-    suspend operator fun invoke(id: Int): AppItem {
+    suspend operator fun invoke(id: String): AppItem {
         val app = repository.getAppItemById(id)
         if(app.category == AppCategory.FUN){
             throw IllegalStateException()

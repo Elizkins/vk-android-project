@@ -25,8 +25,10 @@ import coil3.compose.AsyncImage
 import com.semenova.vkandroidproject.domain.AppCategory
 import com.semenova.vkandroidproject.presentation.ui.theme.CommBg
 import com.semenova.vkandroidproject.presentation.ui.theme.FunBg
+import com.semenova.vkandroidproject.presentation.ui.theme.LifestyleBg
 import com.semenova.vkandroidproject.presentation.ui.theme.PhotoBg
 import com.semenova.vkandroidproject.presentation.ui.theme.TravelBg
+import com.semenova.vkandroidproject.presentation.ui.theme.UnknownBg
 import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 import com.semenova.vkandroidproject.presentation.ui.theme.WorkBg
 
@@ -44,6 +46,8 @@ fun AppListItem(
         AppCategory.TRAVEL -> TravelBg
         AppCategory.WORK -> WorkBg
         AppCategory.PHOTO -> PhotoBg
+        AppCategory.LIFESTYLE -> LifestyleBg
+        AppCategory.UNKNOWN -> UnknownBg
     }
     Row(
         modifier = modifier
