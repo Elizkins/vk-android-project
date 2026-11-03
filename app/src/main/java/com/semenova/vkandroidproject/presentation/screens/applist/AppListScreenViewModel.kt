@@ -11,6 +11,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -33,14 +34,17 @@ class AppListScreenViewModel @Inject constructor(
     }
     
     fun loadItems() {
-        getAllApps()
-            .onStart {
-                _state.value = AppListScreenState.Loading
-            }.onEach { allApps ->
-                _state.value = AppListScreenState.Content(apps = allApps)
-            }.catch {
-                _state.value = AppListScreenState.Error
-            }.launchIn(viewModelScope)
+        viewModelScope.launch {
+            getAllApps()
+                .onStart {
+                    _state.value = AppListScreenState.Loading
+                }.onEach { allApps ->
+                    _state.value = AppListScreenState.Content(apps = allApps)
+                }.catch {
+                    _state.value = AppListScreenState.Error
+                }.collect()
+        }
+        
     }
     
     fun sendMessage() {

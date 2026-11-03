@@ -5,5 +5,7 @@ enum class AppCategory(val description: String) {
     FUN("Развлечения"),
     TRAVEL("Путешествия"),
     WORK("Продуктивность"),
-    PHOTO("Фото")
+    PHOTO("Фото"),
+    LIFESTYLE("Образ жизни"),
+    UNKNOWN("Неизвестно")
 }

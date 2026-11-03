@@ -1,7 +1,7 @@
 package com.semenova.vkandroidproject.domain
 
 data class AppItem(
-    val id: Int,
+    val id: String,
     val name: String,
     val developer: String,
     val category: AppCategory,

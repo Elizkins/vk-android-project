@@ -101,7 +101,7 @@ fun AppDetailsHeader(
 @Composable
 private fun Preview() {
     val app = AppItem(
-        id = 0,
+        id = "0",
         name = "Гильдия Героев: Экшен ММО РПГ",
         developer = "VK Play",
         category = AppCategory.FUN,

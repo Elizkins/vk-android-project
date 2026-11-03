@@ -1,8 +1,7 @@
 package com.semenova.vkandroidproject.data
 
+import com.semenova.vkandroidproject.data.remote.AppCategoryDto
 import com.semenova.vkandroidproject.data.test.AppItemDto
-import com.semenova.vkandroidproject.domain.AppCategory
-import com.semenova.vkandroidproject.domain.AppItem
 
 object AppData {
     private fun shots(seed: String) = List(3) {
@@ -11,10 +10,10 @@ object AppData {
     
     val apps = listOf(
         AppItemDto(
-            id = 1,
+            id = "1",
             name = "Telegram",
             developer = "Telegram FZ-LLC",
-            category = AppCategory.COMM,
+            category = AppCategoryDto.COMMUNICATION,
             ageRating = 12,
             size = 78.4f,
             iconUrl = "https://www.google.com/s2/favicons?domain=telegram.org&sz=128",
@@ -22,10 +21,10 @@ object AppData {
             description = "Быстрый и безопасный мессенджер для общения без границ. Создавайте чаты, звоните друзьям и подписывайтесь на любимые каналы!"
         ),
         AppItemDto(
-            id = 2,
+            id = "2",
             name = "Spotify",
             developer = "Spotify AB",
-            category = AppCategory.FUN,
+            category = AppCategoryDto.ENTERTAINMENT,
             ageRating = 12,
             size = 95.2f,
             iconUrl = "https://www.google.com/s2/favicons?domain=spotify.com&sz=128",
@@ -33,10 +32,10 @@ object AppData {
             description = "Миллионы треков и подкастов в одном приложении. Собирайте плейлисты под настроение и слушайте музыку где угодно!"
         ),
         AppItemDto(
-            id = 3,
+            id = "3",
             name = "Google Карты",
             developer = "Google LLC",
-            category = AppCategory.TRAVEL,
+            category = AppCategoryDto.TRAVEL,
             ageRating = 3,
             size = 121.6f,
             iconUrl = "https://www.google.com/s2/favicons?domain=maps.google.com&sz=128",
@@ -44,10 +43,10 @@ object AppData {
             description = "Подробные карты и точная навигация по всему миру. Стройте маршруты, находите интересные места и не теряйтесь в пути!"
         ),
         AppItemDto(
-            id = 4,
+            id = "4",
             name = "Notion",
             developer = "Notion Labs, Inc.",
-            category = AppCategory.WORK,
+            category = AppCategoryDto.PRODUCTIVITY,
             ageRating = 3,
             size = 64.8f,
             iconUrl = "https://www.google.com/s2/favicons?domain=notion.so&sz=128",
@@ -55,10 +54,10 @@ object AppData {
             description = "Единое пространство для заметок, задач и проектов. Наведите порядок в делах и создайте собственную базу знаний!"
         ),
         AppItemDto(
-            id = 5,
+            id = "5",
             name = "Instagram",
             developer = "Meta Platforms, Inc.",
-            category = AppCategory.PHOTO,
+            category = AppCategoryDto.PHOTO_VIDEO,
             ageRating = 12,
             size = 58.3f,
             iconUrl = "https://www.google.com/s2/favicons?domain=instagram.com&sz=128",
@@ -66,10 +65,10 @@ object AppData {
             description = "Соцсеть для ярких фото и коротких видео. Делитесь моментами жизни и следите за историями друзей и любимых авторов!"
         ),
         AppItemDto(
-            id = 6,
+            id = "6",
             name = "Яндекс Go",
             developer = "Яндекс",
-            category = AppCategory.TRAVEL,
+            category = AppCategoryDto.TRAVEL,
             ageRating = 12,
             size = 142.0f,
             iconUrl = "https://www.google.com/s2/favicons?domain=go.yandex&sz=128",
@@ -77,10 +76,10 @@ object AppData {
             description = "Такси, доставка и самокаты в одном приложении. Выбирайте удобный способ поездки и добирайтесь быстрее!"
         ),
         AppItemDto(
-            id = 7,
+            id = "7",
             name = "YouTube",
             developer = "Google LLC",
-            category = AppCategory.FUN,
+            category = AppCategoryDto.ENTERTAINMENT,
             ageRating = 12,
             size = 86.5f,
             iconUrl = "https://www.google.com/s2/favicons?domain=youtube.com&sz=128",
@@ -88,10 +87,10 @@ object AppData {
             description = "Крупнейший видеосервис с миллионами роликов и прямых трансляций. Смотрите, учитесь и открывайте новых авторов!"
         ),
         AppItemDto(
-            id = 8,
+            id = "8",
             name = "Google Docs",
             developer = "Google LLC",
-            category = AppCategory.WORK,
+            category = AppCategoryDto.PRODUCTIVITY,
             ageRating = 3,
             size = 49.7f,
             iconUrl = "https://www.google.com/s2/favicons?domain=docs.google.com&sz=128",
@@ -99,10 +98,10 @@ object AppData {
             description = "Онлайн-редактор текстовых документов с совместным доступом. Пишите вместе с командой и не теряйте ни одной правки!"
         ),
         AppItemDto(
-            id = 9,
+            id = "9",
             name = "Google Фото",
             developer = "Google LLC",
-            category = AppCategory.PHOTO,
+            category = AppCategoryDto.PHOTO_VIDEO,
             ageRating = 3,
             size = 73.1f,
             iconUrl = "https://www.google.com/s2/favicons?domain=photos.google.com&sz=128",
@@ -110,10 +109,10 @@ object AppData {
             description = "Храните фото и видео в облаке и находите нужные кадры за секунды. Редактируйте снимки и делитесь альбомами с близкими!"
         ),
         AppItemDto(
-            id = 10,
+            id = "10",
             name = "VK",
             developer = "VK",
-            category = AppCategory.COMM,
+            category = AppCategoryDto.COMMUNICATION,
             ageRating = 12,
             size = 134.5f,
             iconUrl = "https://www.google.com/s2/favicons?domain=vk.com&sz=128",
@@ -121,10 +120,10 @@ object AppData {
             description = "Социальная сеть для общения, музыки и видео. Переписывайтесь с друзьями, следите за новостями и находите интересные сообщества!"
         ),
         AppItemDto(
-            id = 11,
+            id = "11",
             name = "Яндекс Музыка",
             developer = "Яндекс",
-            category = AppCategory.FUN,
+            category = AppCategoryDto.ENTERTAINMENT,
             ageRating = 12,
             size = 89.9f,
             iconUrl = "https://www.google.com/s2/favicons?domain=music.yandex.ru&sz=128",
@@ -132,10 +131,10 @@ object AppData {
             description = "Огромная музыкальная коллекция с умными подборками. Слушайте любимые треки, открывайте новых исполнителей и сохраняйте музыку офлайн!"
         ),
         AppItemDto(
-            id = 12,
+            id = "12",
             name = "Яндекс Карты",
             developer = "Яндекс",
-            category = AppCategory.TRAVEL,
+            category = AppCategoryDto.TRAVEL,
             ageRating = 3,
             size = 112.3f,
             iconUrl = "https://www.google.com/s2/favicons?domain=yandex.ru/maps&sz=128",
@@ -143,10 +142,10 @@ object AppData {
             description = "Карты, навигация и общественный транспорт с учётом пробок. Находите организации, стройте маршруты и добирайтесь без задержек!"
         ),
         AppItemDto(
-            id = 13,
+            id = "13",
             name = "Google Таблицы",
             developer = "Google LLC",
-            category = AppCategory.WORK,
+            category = AppCategoryDto.PRODUCTIVITY,
             ageRating = 3,
             size = 52.6f,
             iconUrl = "https://www.google.com/s2/favicons?domain=sheets.google.com&sz=128",
@@ -154,10 +153,10 @@ object AppData {
             description = "Онлайн-таблицы для расчётов, отчётов и анализа данных. Работайте с командой в реальном времени и сохраняйте изменения автоматически!"
         ),
         AppItemDto(
-            id = 14,
+            id = "14",
             name = "Snapseed",
             developer = "Google LLC",
-            category = AppCategory.PHOTO,
+            category = AppCategoryDto.PHOTO_VIDEO,
             ageRating = 3,
             size = 38.2f,
             iconUrl = "https://www.google.com/s2/favicons?domain=snapseed.online&sz=128",

@@ -13,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -22,13 +23,13 @@ import kotlinx.coroutines.launch
 class AppScreenViewModel @AssistedInject constructor(
     private val getAllApps: GetAllApps,
     private val getAppById: GetAppById,
-    @Assisted("appId") private val appId: Int
+    @Assisted("appId") private val appId: String
 ) : ViewModel() {
     
     @AssistedFactory
     interface Factory {
         fun create(
-            @Assisted("appId") appId: Int
+            @Assisted("appId") appId: String
         ): AppScreenViewModel
     }
     
@@ -36,17 +37,18 @@ class AppScreenViewModel @AssistedInject constructor(
     val state = _state.asStateFlow()
     
     init {
-        getAllApps()
-            .onStart {
-                _state.value = AppScreenState.Loading
-            }.onEach { allApps ->
-                _state.value = AppScreenState.Content(
-                    app = getAppById(appId),
-                    apps = allApps
-                )
-            }.catch {
-                _state.value = AppScreenState.Error
-            }.launchIn(viewModelScope)
+        viewModelScope.launch {
+            getAllApps()
+                .onStart { _state.value = AppScreenState.Loading }
+                .onEach { allApps ->
+                    _state.value = AppScreenState.Content(
+                        app = getAppById(appId),
+                        apps = allApps
+                    )
+                }
+                .catch { _state.value = AppScreenState.Error }
+                .collect()
+        }
     }
 }
 

@@ -36,7 +36,7 @@ fun Showcase(
     appList: List<AppItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
-    onAppClick: (Int) -> Unit
+    onAppClick: (String) -> Unit
 ) {
     Column(modifier) {
         Text(
