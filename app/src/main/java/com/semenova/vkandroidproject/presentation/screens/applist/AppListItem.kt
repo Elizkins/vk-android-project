@@ -38,6 +38,7 @@ fun AppListItem(
     icon: String,
     title: String,
     description: String,
+    rating: Float?,
     category: AppCategory
 ) {
     val categoryColor = when (category) {
@@ -55,13 +56,17 @@ fun AppListItem(
             .background(MaterialTheme.colorScheme.background)
             .padding(16.dp)
     ) {
-        AsyncImage(
-            modifier = Modifier
-                .size(50.dp)
-                .clip(RoundedCornerShape(16.dp)),
-            model = icon,
-            contentDescription = null
-        )
+        Column {
+            AsyncImage(
+                modifier = Modifier
+                    .size(50.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                model = icon,
+                contentDescription = null
+            )
+            Spacer(Modifier.height(8.dp))
+            RatingChip(rating)
+        }
         Spacer(modifier = Modifier.width(16.dp))
         Column {
             Text(
@@ -103,6 +108,7 @@ fun AppListItemPreview() {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
             AppListItem(
                 modifier = Modifier.padding(innerPadding),
+                rating = 1f,
                 title = "Telegram",
                 description = "Быстрые сообщения, звонки и каналы",
                 category = AppCategory.COMM,

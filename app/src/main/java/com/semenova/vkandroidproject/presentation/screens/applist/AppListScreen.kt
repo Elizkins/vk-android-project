@@ -80,6 +80,7 @@ fun AppListScreen(
             when (state) {
                 is AppListScreenState.Content -> {
                     val apps = (state as AppListScreenState.Content).apps
+                    val ratings = (state as AppListScreenState.Content).ratings
                     LazyColumn(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         contentPadding = PaddingValues(vertical = 8.dp)
@@ -90,7 +91,8 @@ fun AppListScreen(
                                 title = app.name,
                                 icon = app.iconUrl,
                                 description = app.description,
-                                category = app.category
+                                category = app.category,
+                                rating = ratings[app.id]
                             )
                             if (index < apps.lastIndex) {
                                 HorizontalDivider(

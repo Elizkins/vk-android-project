@@ -1,7 +1,7 @@
 package com.semenova.vkandroidproject.di
 
 import com.semenova.vkandroidproject.data.remote.AppsApiService
-import com.semenova.vkandroidproject.data.repostory.AppRepositoryImpl
+import com.semenova.vkandroidproject.data.repository.AppRepositoryImpl
 import com.semenova.vkandroidproject.domain.AppRepository
 import dagger.Binds
 import dagger.Module
