@@ -33,9 +33,10 @@ import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
 
 @Composable
 fun Showcase(
-    appList: List<AppItem>,
-    contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
+    appList: List<AppItem>,
+    ratings: Map<String, Float?> = emptyMap(),
+    contentPadding: PaddingValues,
     onAppClick: (String) -> Unit
 ) {
     Column(modifier) {
@@ -63,7 +64,8 @@ fun Showcase(
                         title = app.name,
                         icon = app.iconUrl,
                         description = app.description,
-                        category = app.category
+                        category = app.category,
+                        rating = ratings[app.id]
                     )
                 }
             }

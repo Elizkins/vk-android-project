@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,10 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.semenova.vkandroidproject.R
-import com.semenova.vkandroidproject.data.AppData
-import com.semenova.vkandroidproject.domain.AppCategory
-import com.semenova.vkandroidproject.domain.AppItem
 import com.semenova.vkandroidproject.presentation.ui.theme.VkAndroidProjectTheme
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun AppDetailsScreen(
@@ -49,11 +48,12 @@ fun AppDetailsScreen(
     onShowcaseAppClick: (String) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    
-    val context = LocalContext.current
-    val underDevelopmentText = stringResource(R.string.under_developement)
-    
+    val events = viewModel.events
     var descriptionCollapsed by remember { mutableStateOf(false) }
+    
+    ObserveEvents(
+        events = events
+    )
     
     Scaffold { innerPadding ->
         
@@ -61,6 +61,7 @@ fun AppDetailsScreen(
             is AppScreenState.Content -> {
                 val app = (state as AppScreenState.Content).app
                 val apps = (state as AppScreenState.Content).apps
+                val installState = (state as AppScreenState.Content).installState
                 Column(
                     modifier = modifier
                         .padding(innerPadding)
@@ -70,7 +71,7 @@ fun AppDetailsScreen(
                     Toolbar(
                         onBackClick = onBackClick,
                         onShareClick = {
-                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                            viewModel.sendMessage()
                         },
                     )
                     Spacer(Modifier.height(8.dp))
@@ -80,12 +81,19 @@ fun AppDetailsScreen(
                     )
                     Spacer(Modifier.height(16.dp))
                     InstallButton(
-                        onClick = {
-                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                        onInstallClick = {
+                            viewModel.onInstallClick()
+                        },
+                        onCancelInstallClick = {
+                            viewModel.onInstallClick()
+                        },
+                        onOpenClick = {
+                            viewModel.sendMessage()
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 16.dp),
+                        installState = installState
                     )
                     Spacer(Modifier.height(12.dp))
                     ScreenshotsList(
@@ -118,7 +126,7 @@ fun AppDetailsScreen(
                     Developer(
                         name = app.developer,
                         onClick = {
-                            Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
+                            viewModel.sendMessage()
                         },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -145,6 +153,23 @@ fun AppDetailsScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     CircularProgressIndicator()
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ObserveEvents(
+    events: Flow<AppDetailsScreenEvent>
+) {
+    val context = LocalContext.current
+    val underDevelopmentText = stringResource(R.string.under_developement)
+    LaunchedEffect(Unit) {
+        events.collect { event ->
+            when (event) {
+                is AppDetailsScreenEvent.ShowToastInDevelop -> {
+                    Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
                 }
             }
         }

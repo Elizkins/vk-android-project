@@ -15,4 +15,6 @@
     <string name="install">Установить</string>
     <string name="under_developement">В процессе разработки</string>
     <string name="app_list_something_important">Something important...</string>
+    <string name="uninstall">Удалить</string>
+    <string name="open">Открыть</string>
 </resources>
